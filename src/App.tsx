@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  ChevronDown, 
-  Award, 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ChevronDown,
+  Award,
   GraduationCap,
   Code,
   Database,
   Brain,
   Cloud,
   Terminal,
-  Palette
+  Palette,
+  FileText
 } from 'lucide-react';
 
 import LoadingScreen from './components/LoadingScreen';
@@ -28,37 +29,56 @@ function App() {
 
   const projects = [
     {
+      title: 'BrainRot Learning (Insta AI Agent)',
+      description: 'Automated Instagram Reels creation pipeline transforming natural language prompts into viral educational content through multi-agent AI orchestration.',
+      techStack: ['Python', 'Gemini 2.5 Flash', 'ElevenLabs', 'MoviePy'],
+      githubUrl: 'https://github.com/divyamagg2005/Insta_ai_agent',
+    },
+    {
+      title: 'Confession ADG',
+      description: 'Secure, anonymous confession platform handling 200+ concurrent users with separated public/admin interfaces.',
+      techStack: ['React', 'TypeScript', 'Supabase', 'TailwindCSS'],
+      githubUrl: 'https://github.com/divyamagg2005/confession_adg',
+      liveUrl: 'https://confession-adg.vercel.app/',
+    },
+    {
       title: 'TermiGenius',
-      description: 'Converts natural language to secure terminal commands',
-      techStack: ['Python', 'Gemini API'],
+      description: 'AI-powered CLI converting natural language to secure PowerShell commands with risk scoring and verification.',
+      techStack: ['Python', 'Gemini API', 'PowerShell', 'Rich TUI'],
       githubUrl: 'https://github.com/divyamagg2005/TermiGenius',
     },
     {
-      title: 'AnonBoard',
-      description: 'Real-time anonymous message board for communities',
-      techStack: ['React', 'Supabase'],
-      githubUrl: 'https://github.com/divyamagg2005/anonboard',
-      liveUrl: 'https://anonboard-liard.vercel.app/',
-    },
-    {
-      title: 'PDF Knowledge Assistant',
-      description: 'Chat with documents using AI & semantic search',
-      techStack: ['LangChain', 'Gemini API'],
-      githubUrl: 'https://github.com/divyamagg2005/ai_chatbot',
-      liveUrl: 'https://aipdfchatbotsystem.streamlit.app/',
-    },
-    {
-      title: 'Health Monitor',
-      description: 'AI-based heart data analysis from real-time sensors',
-      techStack: ['C++', 'Python', 'Gemini API'],
-      githubUrl: 'https://github.com/divyamagg2005/heart-monitoring-with-data-storage-and-AI-analysis-.-',
+      title: 'MailMind',
+      description: 'Privacy-focused Chrome extension for Gmail summarization and reply drafting using local-first architecture.',
+      techStack: ['JavaScript', 'Chrome Extension', 'Groq LLMs'],
+      githubUrl: 'https://github.com/divyamagg2005/Smart-email-summariser',
     },
     {
       title: 'Web Gladiator',
-      description: '3D FPS browser game with AI enemies and day-night cycle',
-      techStack: ['Next.js', 'Three.js'],
+      description: 'Immersive 3D FPS game with dynamic lighting, enemy AI, and responsive combat systems.',
+      techStack: ['Next.js', 'Three.js', 'React', 'TypeScript'],
       githubUrl: 'https://github.com/divyamagg2005/web_gladiator',
       liveUrl: 'https://survivor-self.vercel.app/',
+    },
+    {
+      title: 'HostelGrid',
+      description: 'Comprehensive hostel management system with role-based access control and complaint tracking.',
+      techStack: ['Django', 'Supabase', 'Bootstrap 5'],
+      githubUrl: 'https://github.com/divyamagg2005/HostelGrid',
+      liveUrl: 'https://hostelgrid-x2mo.onrender.com/',
+    },
+    {
+      title: 'Heart Rate Monitor',
+      description: 'Real-time heart monitoring system with Arduino data pipeline and AI-based health analysis.',
+      techStack: ['C++', 'Python', 'Gemini API', 'Arduino'],
+      githubUrl: 'https://github.com/divyamagg2005/heart-monitoring-with-data-storage-and-AI-analysis-.-',
+    },
+    {
+      title: 'PDF Knowledge Assistant',
+      description: 'Intelligent chatbot for PDF documents using vector similarity search and context-aware responses.',
+      techStack: ['LangChain', 'Gemini API', 'Streamlit'],
+      githubUrl: 'https://github.com/divyamagg2005/ai_chatbot',
+      liveUrl: 'https://aipdfchatbotsystem.streamlit.app/',
     },
   ];
 
@@ -66,45 +86,45 @@ function App() {
     {
       icon: Code,
       title: 'Languages',
-      skills: ['Python', 'C++', 'JavaScript', 'TypeScript', 'PowerShell'],
+      skills: ['Python', 'C++', 'JavaScript', 'TypeScript', 'PowerShell', 'Java'],
     },
     {
       icon: Palette,
       title: 'Frontend',
-      skills: ['React', 'Next.js', 'Three.js', 'Tailwind CSS', 'HTML/CSS'],
+      skills: ['React', 'Next.js', 'Three.js', 'TailwindCSS', 'Bootstrap', 'Shadow DOM'],
     },
     {
       icon: Database,
       title: 'Backend & DB',
-      skills: ['Node.js', 'Firebase', 'Supabase', 'MySQL'],
+      skills: ['Django', 'Node.js', 'Firebase', 'Supabase', 'PostgreSQL', 'MySQL'],
     },
     {
       icon: Brain,
       title: 'AI/ML',
-      skills: ['LangChain', 'Gemini API', 'IBM Watson', 'TensorFlow'],
+      skills: ['LangChain', 'Gemini API', 'Groq API', 'TensorFlow', 'Scikit-learn'],
     },
     {
       icon: Cloud,
       title: 'Cloud & DevOps',
-      skills: ['IBM Cloud', 'Firebase Hosting'],
+      skills: ['Vercel', 'Render', 'Git', 'GitHub Actions'],
     },
     {
       icon: Terminal,
-      title: 'Tools',
-      skills: ['Git', 'Streamlit', 'Embedded Programming'],
+      title: 'Tools & Security',
+      skills: ['VS Code', 'Streamlit', 'Arduino', 'OAuth 2.0', 'FFmpeg', 'Chrome APIs'],
     },
   ];
 
   const educationData = [
-    { year: '2023–2027', institution: 'VIT Vellore', score: 'CGPA: 8.84' },
-    { year: '12th', institution: 'Mayo International School', score: '93.8%' },
-    { year: '10th', institution: 'St. Mary\'s School', score: '93.8%' },
+    { year: '2023–2027', institution: 'VIT Vellore', score: 'CGPA: 8.81' },
+    { year: '2023', institution: 'Mayo International School', score: '93.8%' },
+    { year: '2021', institution: 'St. Mary\'s School', score: '93.8%' },
   ];
 
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
-      
+
       <ParticleBackground />
       <Navigation />
 
@@ -128,7 +148,7 @@ function App() {
               Software Engineer & AI Innovator building cutting-edge systems that make technology intuitive and useful
             </p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -139,9 +159,19 @@ function App() {
               href="https://github.com/divyamagg2005"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-slate-800/50 hover:bg-slate-700/50 rounded-full transition-all duration-300 hover:scale-110 border border-slate-600/50 hover:border-blue-400/50"
+              className="p-3 bg-slate-800/50 hover:bg-slate-700/50 rounded-full transition-all duration-300 hover:scale-110 border border-slate-600/50 hover:border-blue-400/50 group"
+              title="GitHub"
             >
-              <Github className="w-6 h-6 text-slate-300 hover:text-blue-400" />
+              <Github className="w-6 h-6 text-slate-300 group-hover:text-blue-400" />
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1j0KnUCFLyD47tS4vCUoi4Llhsu8d-6gy/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-slate-800/50 hover:bg-slate-700/50 rounded-full transition-all duration-300 hover:scale-110 border border-slate-600/50 hover:border-blue-400/50 group"
+              title="View Resume"
+            >
+              <FileText className="w-6 h-6 text-slate-300 group-hover:text-blue-400" />
             </a>
             <a
               href="https://www.linkedin.com/in/divyam-aggarwal-51b52328a/"
@@ -184,7 +214,7 @@ function App() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8"></div>
             <p className="text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto">
-              I'm a Computer Science student at VIT Vellore, passionate about building AI-driven systems that bridge the gap between cutting-edge technology and practical applications. My work spans from intelligent health diagnostics to natural language interfaces for terminal automation, always focusing on making complex technology accessible and useful.
+              Computer Science student at VIT Vellore with a strong focus on AI-driven systems and real-world problem solving. Experienced in developing intelligent health diagnostics, natural language interfaces, and real-time applications. Passionate about transforming complex technologies into accessible, user-centric solutions.
             </p>
           </motion.div>
         </div>
@@ -243,16 +273,24 @@ function App() {
           >
             <div className="flex items-center mb-6">
               <Award className="w-8 h-8 text-purple-400 mr-4" />
-              <h3 className="text-2xl font-bold text-white">ADGVIT - Senior Core Member & Collaboration Executive</h3>
+              <h3 className="text-2xl font-bold text-white">ADGVIT - Finance Head (Board Member)</h3>
             </div>
             <ul className="space-y-4 text-slate-300">
               <li className="flex items-start">
                 <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                <span>Secured sponsorships from Kandola Networks, enhancing event capabilities and community reach</span>
+                <span>Led sponsorship strategy and negotiations, securing funding for flagship events like iOS Fusion 7.0.</span>
               </li>
               <li className="flex items-start">
                 <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                <span>Successfully invited Pragya Muthuraman as guest speaker for SharkTech, bringing industry expertise to the community</span>
+                <span>Successfully invited Pragya Muthuraman (Founder, The Internet Company) as keynote speaker for Yantra 2025.</span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <span>Managed speaker relations for iOS Fusion 8.0, interacting with industry leaders like Amrit Raj (Co-Founder, Women in Product India).</span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <span>Collaborated with cross-functional teams to plan budgets and allocate funds for community workshops.</span>
               </li>
             </ul>
           </motion.div>
@@ -299,6 +337,50 @@ function App() {
         </div>
       </section>
 
+      {/* Certifications Section */}
+      <section id="certifications" className="py-20 px-4 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+              Certifications
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-orange-500 mx-auto mb-8"></div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 hover:border-yellow-500/50 transition-all duration-300"
+          >
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex items-center gap-4">
+                <Award className="w-10 h-10 text-yellow-400" />
+                <div className="text-left">
+                  <h3 className="text-xl font-bold text-white">IBM Generative AI Specialization</h3>
+                  <p className="text-slate-400">Score: 97/100 • Issued by IBM</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <a
+                  href="https://drive.google.com/file/d/1wvgG0pRaP422fNMEcPwCsOlU0Y4_6QFr/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2 bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400 rounded-lg transition-colors border border-yellow-500/50"
+                >
+                  Certificate
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Skills Section */}
       <section id="skills" className="py-20 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -329,65 +411,12 @@ function App() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Get In Touch
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-8"></div>
-            <p className="text-lg text-slate-300 mb-12">
-              Let's connect and build something amazing together!
-            </p>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-          >
-            <a
-              href="https://github.com/divyamagg2005"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 rounded-xl transition-all duration-300 border border-slate-600/50 hover:border-blue-400/50 transform hover:scale-105"
-            >
-              <Github className="w-6 h-6 text-blue-400" />
-              <span className="text-white font-medium">divyamagg2005</span>
-            </a>
-            
-            <a
-              href="https://linkedin.com/in/divyam-aggarwal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-800 to-blue-700 hover:from-blue-700 hover:to-blue-600 rounded-xl transition-all duration-300 border border-blue-600/50 hover:border-blue-400/50 transform hover:scale-105"
-            >
-              <Linkedin className="w-6 h-6 text-blue-300" />
-              <span className="text-white font-medium">Divyam Aggarwal</span>
-            </a>
-            
-            <a
-              href="mailto:divyamagg2005@gmail.com"
-              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-800 to-purple-700 hover:from-purple-700 hover:to-purple-600 rounded-xl transition-all duration-300 border border-purple-600/50 hover:border-purple-400/50 transform hover:scale-105"
-            >
-              <Mail className="w-6 h-6 text-purple-300" />
-              <span className="text-white font-medium">divyamagg2005@gmail.com</span>
-            </a>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-slate-800/50 relative z-10">
         <div className="max-w-7xl mx-auto text-center text-slate-400">
-          <p>&copy; 2024 Divyam Aggarwal. Built with React, TypeScript, and Tailwind CSS.</p>
+          <p>"Learning until my knowledge turns into my capability."</p>
         </div>
       </footer>
     </div>
