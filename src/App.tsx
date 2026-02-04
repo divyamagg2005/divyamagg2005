@@ -19,6 +19,7 @@ import {
 import LoadingScreen from './components/LoadingScreen';
 import ParticleBackground from './components/ParticleBackground';
 import Navigation from './components/Navigation';
+import SmoothScroll from './components/SmoothScroll';
 import ProjectCard from './components/ProjectCard';
 import SkillCard from './components/SkillCard';
 
@@ -124,6 +125,8 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+
+      <SmoothScroll />
 
       <ParticleBackground />
       <Navigation />

@@ -44,9 +44,10 @@ body {
 }
 
 /* Smooth scroll behavior */
-html {
+/* Removed for Lenis compatibility */
+/* html {
   scroll-behavior: smooth;
-}
+} */
 
 /* Custom animations */
 @keyframes fadeInUp {
