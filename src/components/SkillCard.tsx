@@ -1,5 +1,5 @@
 import React from 'react';
-import { DivideIcon as LucideIcon } from 'lucide-react';
+import { type LucideIcon } from 'lucide-react';
 
 interface SkillCardProps {
   icon: LucideIcon;
@@ -11,7 +11,7 @@ interface SkillCardProps {
 const SkillCard: React.FC<SkillCardProps> = ({ icon: Icon, title, skills, delay }) => {
   return (
     <div
-      className="group bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-500 transform hover:scale-105"
+      className="group bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-500 transform-gpu hover:scale-105 backface-hidden"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="flex items-center mb-4">
@@ -22,7 +22,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ icon: Icon, title, skills, delay 
           {title}
         </h3>
       </div>
-      
+
       <div className="flex flex-wrap gap-2">
         {skills.map((skill, index) => (
           <span

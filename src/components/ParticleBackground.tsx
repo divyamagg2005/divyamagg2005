@@ -7,14 +7,18 @@ const ParticleBackground: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false }); // Optimization: alpha: false since we draw black background
     if (!ctx) return;
 
     let animationFrameId: number;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2); // Clamp to 2 for performance
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
     };
 
     resizeCanvas();
@@ -59,21 +63,22 @@ const ParticleBackground: React.FC = () => {
     for (let i = 0; i < particleCount; i++) {
       const size = Math.random() * 3 + 2;
       particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
         vx: (Math.random() - 0.5) * 0.5,
         vy: (Math.random() - 0.5) * 0.5,
         baseVx: (Math.random() - 0.5) * 0.5,
         baseVy: (Math.random() - 0.5) * 0.5,
         size: size,
         opacity: Math.random() * 0.5 + 0.4,
-        hue: Math.random() * 60 + 200, // Blue to cyan range
+        hue: Math.random() * 30 + 120, // Neon Green range
         density: (Math.random() * 30) + 1,
       });
     }
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear completely for sharper lines, or use fillRect for trail
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight); // More performant than clearRect for full opaque background
 
       // Optional: Trail effect
       // ctx.fillStyle = 'rgba(2, 6, 23, 0.2)';
@@ -178,7 +183,7 @@ const ParticleBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ background: 'linear-gradient(135deg, #020617 0%, #0f172a 100%)' }}
+      style={{ background: '#000000' }}
     />
   );
 };

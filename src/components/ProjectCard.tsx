@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <div
-      className="group relative bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2"
+      className="group relative bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-2 backface-hidden"
       style={{
         animationDelay: `${delay}ms`,
         perspective: '1000px',
@@ -28,7 +28,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     >
       {/* 3D Card Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
+
       {/* Glow Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 -z-10" />
 
@@ -36,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
           {title}
         </h3>
-        
+
         <p className="text-slate-300 text-sm mb-4 leading-relaxed">
           {description}
         </p>
@@ -62,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             <Github size={16} />
             Code
           </a>
-          
+
           {liveUrl && (
             <a
               href={liveUrl}

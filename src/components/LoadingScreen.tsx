@@ -23,7 +23,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 bg-slate-950 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
       <div className="text-center">
         <div className="relative mb-8">
           <svg
@@ -39,10 +39,10 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                 <stop offset="100%" stopColor="#06B6D4" />
               </linearGradient>
               <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge> 
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
             </defs>
@@ -66,24 +66,24 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             divyam
           </div>
         </div>
-        
+
         <div className="w-64 h-1 bg-slate-800 rounded-full mx-auto mb-4">
-          <div 
+          <div
             className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-300 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
-        
+
         <div className="text-slate-400 text-sm font-mono">
           Loading Portfolio... {progress}%
         </div>
       </div>
-      
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400 rounded-full animate-pulse"
+            className="absolute w-1 h-1 bg-green-400 rounded-full animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,

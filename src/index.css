@@ -1,11 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Nohemi Font Family */
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/assets/fonts/nohemi-font-family/Nohemi-Thin-BF6438cc57e2011.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
 
-*, *::before, *::after {
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/assets/fonts/nohemi-font-family/Nohemi-ExtraLight-BF6438cc581502c.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/assets/fonts/nohemi-font-family/Nohemi-Light-BF6438cc5702321.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/assets/fonts/nohemi-font-family/Nohemi-Regular-BF6438cc579d934.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/assets/fonts/nohemi-font-family/Nohemi-Medium-BF6438cc57ddecd.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/assets/fonts/nohemi-font-family/Nohemi-SemiBold-BF6438cc57db2ff.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/assets/fonts/nohemi-font-family/Nohemi-Bold-BF6438cc577b524.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/assets/fonts/nohemi-font-family/Nohemi-ExtraBold-BF6438cc5761ae2.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/assets/fonts/nohemi-font-family/Nohemi-Black-BF6438cc565e67b.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base Styles */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,41 +86,55 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #020617;
+  font-family: 'Nohemi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  background: #000000;
   color: #ffffff;
   overflow-x: hidden;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1e293b;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #475569;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+.text-rendering-optimize {
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Smooth scroll behavior */
-/* Removed for Lenis compatibility */
-/* html {
+html {
   scroll-behavior: smooth;
-} */
+  scroll-snap-type: y proximity;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+  /* Disable all scrolling */
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
 
 /* Custom animations */
 @keyframes fadeInUp {
@@ -55,6 +142,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -62,9 +150,12 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -113,9 +204,11 @@ body {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -152,27 +245,22 @@ body {
   left: 100%;
 }
 
-/* Section transitions */
-section {
-  opacity: 0;
-  transform: translateY(50px);
-  animation: fadeInUp 0.8s ease-out forwards;
-}
+/* Section transitions - removed global rule to prevent conflicts */
 
 /* Responsive design enhancements */
 @media (max-width: 768px) {
   .text-5xl {
     font-size: 2.5rem;
   }
-  
+
   .text-7xl {
     font-size: 3rem;
   }
-  
+
   .text-xl {
     font-size: 1.125rem;
   }
-  
+
   .text-2xl {
     font-size: 1.25rem;
   }
@@ -204,6 +292,20 @@ section {
   padding-block: 4rem;
 }
 
+/* Performance Utilities */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 100vh;
+}
+
+.contain-paint {
+  contain: paint layout;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
 /* Generic card style */
 .card {
   border: 1px solid #1e293b;
@@ -217,7 +319,7 @@ section {
   .bg-slate-900\/50 {
     background-color: rgb(15 23 42 / 0.8);
   }
-  
+
   .border-slate-700\/50 {
     border-color: rgb(51 65 85 / 0.8);
   }
@@ -225,6 +327,7 @@ section {
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
