@@ -13,7 +13,6 @@ import {
 
 import LoadingScreen from './components/LoadingScreen';
 import Meteors from './components/Meteors';
-import Navigation from './components/Navigation';
 import ProjectCard from './components/ProjectCard';
 import SkillCard from './components/SkillCard';
 import HeroScene from './components/HeroScene';
@@ -339,11 +338,6 @@ function App() {
       {/* Background layer - always visible, never unmounts */}
       <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }}>
         <Meteors count={30} />
-      </div>
-
-      {/* Navigation - stays on top */}
-      <div style={{ zIndex: 100 }}>
-        <Navigation />
       </div>
 
       {/* Page content layer */}
