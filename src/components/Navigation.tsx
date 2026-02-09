@@ -40,7 +40,7 @@ const Navigation: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div
-            className="font-mono text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent cursor-pointer"
+            className="font-mono text-xl font-bold text-hero cursor-pointer"
             onClick={() => scrollToSection('hero')}
           >
             divyamagg2005
@@ -52,7 +52,7 @@ const Navigation: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-slate-300 hover:text-blue-400 transition-colors duration-200 text-sm font-medium"
+                className="text-body hover:text-link transition-colors duration-200 text-sm font-medium"
               >
                 {item.label}
               </button>
@@ -61,7 +61,7 @@ const Navigation: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-slate-300 hover:text-blue-400 transition-colors"
+            className="md:hidden text-body hover:text-link transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -76,7 +76,7 @@ const Navigation: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-3 py-2 text-slate-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors duration-200 text-sm font-medium rounded-md"
+                  className="block w-full text-left px-3 py-2 text-body hover:text-link hover:bg-slate-800/50 transition-colors duration-200 text-sm font-medium rounded-md"
                 >
                   {item.label}
                 </button>

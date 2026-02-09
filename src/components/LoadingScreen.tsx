@@ -42,7 +42,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             <EncryptedText
               text="Welcome to my digital space."
               encryptedClassName="text-gray-600"
-              revealedClassName="text-white font-medium"
+              revealedClassName="text-hero font-medium"
               revealDelayMs={1200}
               interval={80}
             />

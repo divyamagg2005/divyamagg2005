@@ -20,24 +20,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <div
-      className="group relative bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-2 backface-hidden"
+      className="group relative bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-link/50 transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-2 backface-hidden"
       style={{
         animationDelay: `${delay}ms`,
         perspective: '1000px',
       }}
     >
       {/* 3D Card Effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-link/10 to-heading/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Glow Effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-link/20 to-heading/20 rounded-xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 -z-10" />
 
       <div className="relative z-10">
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+        <h3 className="text-xl font-bold text-heading mb-3 group-hover:text-link transition-colors duration-300">
           {title}
         </h3>
 
-        <p className="text-slate-300 text-sm mb-4 leading-relaxed">
+        <p className="text-body text-sm mb-4 leading-relaxed">
           {description}
         </p>
 
@@ -45,7 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {techStack.map((tech, index) => (
             <span
               key={index}
-              className="px-3 py-1 bg-slate-800/50 text-blue-300 text-xs font-medium rounded-full border border-slate-600/50"
+              className="px-3 py-1 bg-slate-800/50 text-muted text-xs font-medium rounded-full border border-slate-600/50"
             >
               {tech}
             </span>
@@ -57,7 +57,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 hover:text-white rounded-lg transition-all duration-300 text-sm font-medium border border-slate-600/50 hover:border-slate-500/50"
+            className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 hover:bg-slate-700/50 text-body hover:text-hero rounded-lg transition-all duration-300 text-sm font-medium border border-slate-600/50 hover:border-link/50"
           >
             <Github size={16} />
             Code
@@ -68,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-lg transition-all duration-300 text-sm font-medium shadow-lg hover:shadow-blue-500/25"
+              className="flex items-center gap-2 px-4 py-2 bg-link text-slate-950 hover:bg-link/90 rounded-lg transition-all duration-300 text-sm font-medium shadow-lg hover:shadow-link/25"
             >
               <ExternalLink size={16} />
               Live Demo

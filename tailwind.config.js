@@ -11,6 +11,12 @@ export default {
         slate: {
           950: '#020617',
         },
+        hero: '#EDEDED',
+        heading: '#D1D5DB',
+        body: '#9CA3AF',
+        muted: '#6B7280',
+        link: '#C4B5FD',
+        disabled: '#4B5563',
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',

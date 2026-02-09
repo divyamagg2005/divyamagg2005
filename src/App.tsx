@@ -147,11 +147,11 @@ function App() {
         transition={{ duration: 0.8 }}
         className="text-center max-w-5xl"
       >
-        <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-6xl font-bold mb-8 text-heading">
           About Me
         </h2>
-        <p className="text-lg md:text-2xl text-slate-300 leading-relaxed font-light">
-          Computer Science student at VIT Vellore. I build <span className="text-blue-400 font-semibold">systems</span>, not just websites. From AI-driven diagnostics to real-time collaboration tools, my work bridges the gap between complex tech and human intuition.
+        <p className="text-lg md:text-2xl text-body leading-relaxed font-light">
+          Computer Science student at VIT Vellore. I build <span className="text-link font-semibold">systems</span>, not just websites. From AI-driven diagnostics to real-time collaboration tools, my work bridges the gap between complex tech and human intuition.
         </p>
       </motion.div>
     </div>,
@@ -163,7 +163,7 @@ function App() {
         animate={{ y: 0, opacity: 1 }}
         className="text-center mb-8 shrink-0"
       >
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold text-heading">
           Selected Works
         </h2>
       </motion.div>
@@ -181,7 +181,7 @@ function App() {
         animate={{ scale: 1, opacity: 1 }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold mb-6 text-heading">
           Leadership
         </h2>
       </motion.div>
@@ -192,24 +192,24 @@ function App() {
         className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8"
       >
         <div className="flex items-center mb-6">
-          <Award className="w-8 h-8 text-purple-400 mr-4" />
-          <h3 className="text-2xl font-bold text-white">ADGVIT - Finance Head (Board Member)</h3>
+          <Award className="w-8 h-8 text-link mr-4" />
+          <h3 className="text-2xl font-bold text-heading">ADGVIT - Finance Head (Board Member)</h3>
         </div>
-        <ul className="space-y-4 text-slate-300">
+        <ul className="space-y-4 text-body">
           <li className="flex items-start">
-            <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+            <div className="w-2 h-2 bg-link rounded-full mt-2 mr-4 flex-shrink-0"></div>
             <span>Led sponsorship strategy and negotiations, securing funding for flagship events like iOS Fusion 7.0.</span>
           </li>
           <li className="flex items-start">
-            <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+            <div className="w-2 h-2 bg-link rounded-full mt-2 mr-4 flex-shrink-0"></div>
             <span>Successfully invited Pragya Muthuraman (Founder, The Internet Company) as keynote speaker for Yantra 2025.</span>
           </li>
           <li className="flex items-start">
-            <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+            <div className="w-2 h-2 bg-link rounded-full mt-2 mr-4 flex-shrink-0"></div>
             <span>Managed speaker relations for iOS Fusion 8.0, interacting with industry leaders like Amrit Raj (Co-Founder, Women in Product India).</span>
           </li>
           <li className="flex items-start">
-            <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+            <div className="w-2 h-2 bg-link rounded-full mt-2 mr-4 flex-shrink-0"></div>
             <span>Collaborated with cross-functional teams to plan budgets and allocate funds for community workshops.</span>
           </li>
         </ul>
@@ -223,7 +223,7 @@ function App() {
         animate={{ y: 0, opacity: 1 }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold mb-6 text-heading">
           Education
         </h2>
       </motion.div>
@@ -234,16 +234,16 @@ function App() {
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 flex items-center justify-between hover:border-green-500/50 transition-all duration-300"
+            className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 flex items-center justify-between hover:border-link/50 transition-all duration-300"
           >
             <div className="flex items-center">
-              <GraduationCap className="w-6 h-6 text-green-400 mr-4" />
+              <GraduationCap className="w-6 h-6 text-link mr-4" />
               <div>
-                <h3 className="text-lg font-semibold text-white">{edu.institution}</h3>
-                <p className="text-slate-400 text-sm">{edu.year}</p>
+                <h3 className="text-lg font-semibold text-heading">{edu.institution}</h3>
+                <p className="text-body text-sm">{edu.year}</p>
               </div>
             </div>
-            <div className="text-green-400 font-semibold">
+            <div className="text-link font-semibold">
               {edu.score}
             </div>
           </motion.div>
@@ -258,7 +258,7 @@ function App() {
         animate={{ scale: 1, opacity: 1 }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold mb-6 text-heading">
           Certifications
         </h2>
       </motion.div>
@@ -270,17 +270,17 @@ function App() {
       >
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-4">
-            <Award className="w-10 h-10 text-yellow-400" />
+            <Award className="w-10 h-10 text-link" />
             <div className="text-left">
-              <h3 className="text-xl font-bold text-white">IBM Generative AI Specialization</h3>
-              <p className="text-slate-400">Score: 97/100 • Issued by IBM</p>
+              <h3 className="text-xl font-bold text-heading">IBM Generative AI Specialization</h3>
+              <p className="text-body">Score: 97/100 • Issued by IBM</p>
             </div>
           </div>
           <a
             href="https://drive.google.com/file/d/1wvgG0pRaP422fNMEcPwCsOlU0Y4_6QFr/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2 bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400 rounded-lg transition-colors border border-yellow-500/50"
+            className="px-6 py-2 bg-link/10 hover:bg-link/20 text-link rounded-lg transition-colors border border-link/50"
           >
             Certificate
           </a>
@@ -295,7 +295,7 @@ function App() {
         animate={{ scale: 1, opacity: 1 }}
         className="w-full max-w-6xl"
       >
-        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold text-center mb-12 text-heading">
           Arsenal
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -313,8 +313,8 @@ function App() {
         animate={{ opacity: 1 }}
         className="text-center"
       >
-        <h2 className="text-5xl md:text-7xl font-bold mb-8 text-white">Let's Build.</h2>
-        <p className="text-slate-400 mb-8 max-w-xl mx-auto">
+        <h2 className="text-5xl md:text-7xl font-bold mb-8 text-hero">Let's Build.</h2>
+        <p className="text-body mb-8 max-w-xl mx-auto">
           Open for collaborations and opportunities.
         </p>
         <a
@@ -323,7 +323,7 @@ function App() {
         >
           Get in Touch
         </a>
-        <footer className="mt-20 text-slate-600 text-sm">
+        <footer className="mt-20 text-muted text-sm">
           © {new Date().getFullYear()} Divyam Aggarwal. Crafted with React & Motion.
         </footer>
       </motion.div>
