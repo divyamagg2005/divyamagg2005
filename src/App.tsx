@@ -13,9 +13,9 @@ import {
 
 import LoadingScreen from './components/LoadingScreen';
 import Meteors from './components/Meteors';
-import ProjectCard from './components/ProjectCard';
 import SkillCard from './components/SkillCard';
 import HeroScene from './components/HeroScene';
+import Bookshelf from './components/Bookshelf';
 import { usePageNavigation } from './hooks/usePageNavigation';
 
 // Page wrapper component for consistent transitions
@@ -39,60 +39,6 @@ const Page = ({ children }: { children: React.ReactNode }) => {
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
-  const projects = [
-    {
-      title: 'BrainRot Learning (Insta AI Agent)',
-      description: 'Automated Instagram Reels creation pipeline transforming natural language prompts into viral educational content through multi-agent AI orchestration.',
-      techStack: ['Python', 'Gemini 2.5 Flash', 'ElevenLabs', 'MoviePy'],
-      githubUrl: 'https://github.com/divyamagg2005/Insta_ai_agent',
-    },
-    {
-      title: 'Confession ADG',
-      description: 'Secure, anonymous confession platform handling 200+ concurrent users with separated public/admin interfaces.',
-      techStack: ['React', 'TypeScript', 'Supabase', 'TailwindCSS'],
-      githubUrl: 'https://github.com/divyamagg2005/confession_adg',
-      liveUrl: 'https://confession-adg.vercel.app/',
-    },
-    {
-      title: 'TermiGenius',
-      description: 'AI-powered CLI converting natural language to secure PowerShell commands with risk scoring and verification.',
-      techStack: ['Python', 'Gemini API', 'PowerShell', 'Rich TUI'],
-      githubUrl: 'https://github.com/divyamagg2005/TermiGenius',
-    },
-    {
-      title: 'MailMind',
-      description: 'Privacy-focused Chrome extension for Gmail summarization and reply drafting using local-first architecture.',
-      techStack: ['JavaScript', 'Chrome Extension', 'Groq LLMs'],
-      githubUrl: 'https://github.com/divyamagg2005/Smart-email-summariser',
-    },
-    {
-      title: 'Web Gladiator',
-      description: 'Immersive 3D FPS game with dynamic lighting, enemy AI, and responsive combat systems.',
-      techStack: ['Next.js', 'Three.js', 'React', 'TypeScript'],
-      githubUrl: 'https://github.com/divyamagg2005/web_gladiator',
-      liveUrl: 'https://survivor-self.vercel.app/',
-    },
-    {
-      title: 'HostelGrid',
-      description: 'Comprehensive hostel management system with role-based access control and complaint tracking.',
-      techStack: ['Django', 'Supabase', 'Bootstrap 5'],
-      githubUrl: 'https://github.com/divyamagg2005/HostelGrid',
-      liveUrl: 'https://hostelgrid-x2mo.onrender.com/',
-    },
-    {
-      title: 'Heart Rate Monitor',
-      description: 'Real-time heart monitoring system with Arduino data pipeline and AI-based health analysis.',
-      techStack: ['C++', 'Python', 'Gemini API', 'Arduino'],
-      githubUrl: 'https://github.com/divyamagg2005/heart-monitoring-with-data-storage-and-AI-analysis-.-',
-    },
-    {
-      title: 'PDF Knowledge Assistant',
-      description: 'Intelligent chatbot for PDF documents using vector similarity search and context-aware responses.',
-      techStack: ['LangChain', 'Gemini API', 'Streamlit'],
-      githubUrl: 'https://github.com/divyamagg2005/ai_chatbot',
-      liveUrl: 'https://aipdfchatbotsystem.streamlit.app/',
-    },
-  ];
 
   const skillCategories = [
     {
@@ -184,22 +130,7 @@ function App() {
     </div>,
 
     // Page 2: Projects
-    <div key="projects" className="w-full h-full flex flex-col py-12 overflow-y-auto">
-      <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="text-center mb-8 shrink-0"
-      >
-        <h2 className="text-4xl font-bold text-heading">
-          Selected Works
-        </h2>
-      </motion.div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.title} {...project} delay={index * 50} />
-        ))}
-      </div>
-    </div>,
+    <Bookshelf key="projects" />,
 
     // Page 3: Leadership
     <div key="leadership" className="w-full h-full flex items-center justify-center px-8">
