@@ -38,7 +38,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             />
           </div>
 
-          <div className="mt-8 font-mono text-sm md:text-base text-center">
+          <div className="mt-8 font-mono text-xl md:text-2xl text-center">
             <EncryptedText
               text="Welcome to my digital space."
               encryptedClassName="text-gray-600"
