@@ -15,8 +15,12 @@ const HeroScene: React.FC = () => {
                         duration: 1.5,
                         ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="mb-8 origin-center will-change-transform backface-hidden"
+                    className="mb-8 relative origin-center will-change-transform backface-hidden"
                 >
+                    {/* Background Glow */}
+                    <div className="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full -z-10" />
+                    <div className="absolute inset-0 bg-blue-600/5 blur-[60px] rounded-full -z-10" />
+
                     <h1 className="text-5xl md:text-8xl font-black text-hero py-2 text-center select-none transform-gpu text-rendering-optimize">
                         Divyam Aggarwal
                     </h1>

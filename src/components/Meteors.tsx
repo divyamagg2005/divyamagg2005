@@ -17,6 +17,7 @@ export interface MeteorsProps {
 interface MeteorData {
     id: number;
     left: number;
+    top: number;
     delay: number;
     duration: number;
 }
@@ -31,44 +32,56 @@ export function Meteors({
 }: MeteorsProps) {
     const [meteors, setMeteors] = useState<MeteorData[]>([]);
 
-    // Generate meteor data on client only to avoid hydration mismatch
     useEffect(() => {
         setMeteors(
-            Array.from({ length: count }, (_, i) => ({
-                id: i,
-                left: i * (100 / count), // Evenly distribute across width
-                delay: Math.random() * 5,
-                duration: 3 + Math.random() * 7,
-            }))
+            Array.from({ length: count }, (_, i) => {
+                // Keep the balanced distribution around the diagonal
+                const spawnOnTop = Math.random() > 0.5;
+
+                return {
+                    id: i,
+                    // Spread spawns across a wider area to ensure the center axis is populated
+                    left: spawnOnTop
+                        ? (Math.random() * 120) - 20 // Top edge: -20% to 100%
+                        : 100,                      // Right edge: fixed at 100%
+                    top: spawnOnTop
+                        ? -5                        // Top edge: fixed slightly above
+                        : (Math.random() * 100) - 20, // Right edge: -20% to 80%
+                    delay: Math.random() * 5,
+                    duration: 2 + Math.random() * 6,
+                };
+            })
         );
     }, [count]);
 
     return (
-        <div className={cn("fixed inset-0 overflow-hidden", className)}>
-            {/* Keyframe animation - uses vmax for viewport scaling */}
+        <div className={cn("fixed inset-0 overflow-hidden pointer-events-none", className)}>
+            {/* Keyframe animation */}
             <style>{`
         @keyframes meteor-fall {
           0% {
             transform: rotate(${angle}deg) translateX(0);
+            opacity: 0;
+          }
+          10% {
             opacity: 1;
           }
-          70% {
+          90% {
             opacity: 1;
           }
           100% {
-            transform: rotate(${angle}deg) translateX(-100vmax);
+            transform: rotate(${angle}deg) translateX(-120vmax);
             opacity: 0;
           }
         }
       `}</style>
 
-            {/* Subtle gradient overlay */}
+            {/* Subtle gradient overlay (The Glow) */}
             <div
                 className="pointer-events-none absolute inset-0"
                 style={{
                     background: `
-            radial-gradient(ellipse at 50% 0%, rgba(30, 58, 138, 0.2) 0%, transparent 50%),
-            radial-gradient(ellipse at 100% 100%, rgba(20, 25, 45, 0.15) 0%, transparent 50%)
+            radial-gradient(ellipse at center, rgba(30, 58, 138, 0.15) 0%, transparent 60%)
           `,
                 }}
             />
@@ -79,10 +92,10 @@ export function Meteors({
                     key={meteor.id}
                     className="absolute h-0.5 w-0.5 rounded-full"
                     style={{
-                        top: "-40px",
+                        top: `${meteor.top}%`,
                         left: `${meteor.left}%`,
                         backgroundColor: color,
-                        boxShadow: "0 0 0 1px rgba(59, 130, 246, 0.1)",
+                        boxShadow: `0 0 0 1px ${color}20`,
                         animation: `meteor-fall ${meteor.duration}s linear infinite`,
                         animationDelay: `${meteor.delay}s`,
                     }}
@@ -92,7 +105,7 @@ export function Meteors({
                         className="absolute top-1/2 -translate-y-1/2"
                         style={{
                             left: "100%",
-                            width: "50px",
+                            width: "60px",
                             height: "1px",
                             background: `linear-gradient(to right, ${tailColor}, transparent)`,
                         }}
