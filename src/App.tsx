@@ -139,20 +139,48 @@ function App() {
     <HeroScene key="hero" />,
 
     // Page 1: About
-    <div key="about" className="w-full h-full flex items-center justify-center px-8">
-      <motion.div
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="text-center max-w-5xl"
-      >
-        <h2 className="text-4xl md:text-6xl font-bold mb-8 text-heading">
-          About Me
-        </h2>
-        <p className="text-lg md:text-2xl text-body leading-relaxed font-light">
-          Computer Science student at VIT Vellore. I build <span className="text-link font-semibold">systems</span>, not just websites. From AI-driven diagnostics to real-time collaboration tools, my work bridges the gap between complex tech and human intuition.
-        </p>
-      </motion.div>
+    <div key="about" className="w-full h-full flex items-center justify-center pl-4 md:pl-8 lg:pl-12 pr-8 md:pr-16 lg:pr-24">
+      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        {/* Left Column: Profile Image */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="flex justify-center items-center"
+        >
+          <img
+            src="/assets/pictures/divyam.jpg"
+            alt="Divyam Aggarwal"
+            className="w-full max-w-[440px] rounded-2xl shadow-2xl"
+          />
+        </motion.div>
+
+        {/* Right Column: About Me Content */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+          className="text-left"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-heading tracking-tight">
+            Welcome to my digital space.
+          </h2>
+          <div className="space-y-6 text-lg md:text-xl text-body leading-relaxed font-sans font-light max-w-2xl">
+            <p>
+              I’m Divyam Aggarwal, a B.Tech engineering student at VIT Vellore with a strong interest in building practical, impact-driven software. I enjoy working at the intersection of computer science, AI, and system design, where ideas turn into tools people can actually use.
+            </p>
+            <p>
+              My work spans AI-powered applications, developer tools, and web-based real-time systems, with a strong focus on clean architecture, performance, and usability. I like breaking down complex problems, experimenting with emerging technologies, and refining solutions until they feel intuitive and reliable.
+            </p>
+            <p>
+              Beyond coursework, I actively build projects, explore research-oriented concepts, and stay curious about how technology scales from local systems to real-world deployments. I believe in learning by doing, iterating fast, and constantly raising my own bar.
+            </p>
+            <p>
+              This portfolio is a snapshot of my journey, what I’m building, what I’m learning, and where I’m headed.
+            </p>
+          </div>
+        </motion.div>
+      </div>
     </div>,
 
     // Page 2: Projects
