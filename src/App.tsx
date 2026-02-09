@@ -151,7 +151,7 @@ function App() {
           <img
             src="/assets/pictures/divyam.jpg"
             alt="Divyam Aggarwal"
-            className="w-full max-w-[440px] rounded-2xl shadow-2xl"
+            className="w-full max-w-[475px] rounded-2xl shadow-2xl"
           />
         </motion.div>
 
@@ -165,18 +165,18 @@ function App() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-heading tracking-tight">
             Welcome to my digital space.
           </h2>
-          <div className="space-y-6 text-lg md:text-xl text-body leading-relaxed font-sans font-light max-w-2xl">
+          <div className="space-y-6 text-lg md:text-xl text-body leading-relaxed font-sans font-light max-w-[680px]">
             <p>
-              I’m Divyam Aggarwal, a B.Tech engineering student at VIT Vellore with a strong interest in building practical, impact-driven software. I enjoy working at the intersection of computer science, AI, and system design, where ideas turn into tools people can actually use.
+              I’m <span className="text-heading font-medium">Divyam Aggarwal</span>, a <span className="text-heading font-medium">B.Tech engineering student at VIT Vellore</span> with a strong interest in building <span className="text-heading font-medium">practical, impact-driven software</span>. I enjoy working at the intersection of <span className="text-heading font-medium">computer science, AI, and system design</span>, where <span className="text-heading font-medium">ideas turn into tools people can actually use</span>.
             </p>
             <p>
-              My work spans AI-powered applications, developer tools, and web-based real-time systems, with a strong focus on clean architecture, performance, and usability. I like breaking down complex problems, experimenting with emerging technologies, and refining solutions until they feel intuitive and reliable.
+              My work spans <span className="text-heading font-medium">AI-powered applications</span>, <span className="text-heading font-medium">developer tools</span>, and <span className="text-heading font-medium">web-based real-time systems</span>, with a strong focus on <span className="text-heading font-medium">clean architecture</span>, <span className="text-heading font-medium">performance</span>, and <span className="text-heading font-medium">usability</span>. I like <span className="text-heading font-medium">breaking down complex problems</span>, <span className="text-heading font-medium">experimenting with emerging technologies</span>, and <span className="text-heading font-medium">refining solutions</span> until they feel <span className="text-heading font-medium">intuitive and reliable</span>.
             </p>
             <p>
-              Beyond coursework, I actively build projects, explore research-oriented concepts, and stay curious about how technology scales from local systems to real-world deployments. I believe in learning by doing, iterating fast, and constantly raising my own bar.
+              Beyond coursework, I actively <span className="text-heading font-medium">build projects</span>, explore <span className="text-heading font-medium">research-oriented concepts</span>, and stay curious about how <span className="text-heading font-medium">technology scales from local systems to real-world deployments</span>. I believe in <span className="text-heading font-medium">learning by doing</span>, <span className="text-heading font-medium">iterating fast</span>, and <span className="text-heading font-medium">constantly raising my own bar</span>.
             </p>
             <p>
-              This portfolio is a snapshot of my journey, what I’m building, what I’m learning, and where I’m headed.
+              This portfolio is a <span className="text-heading font-medium">snapshot of my journey</span>, <span className="text-heading font-medium">what I’m building</span>, <span className="text-heading font-medium">what I’m learning</span>, and <span className="text-heading font-medium">where I’m headed</span>.
             </p>
           </div>
         </motion.div>
