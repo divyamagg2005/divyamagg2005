@@ -170,7 +170,7 @@ const HorizontalProjects: React.FC = () => {
                 <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
 
                     {/* Header - Flow Content */}
-                    <div className="relative z-20 mb-12 md:mb-20 text-center w-full">
+                    <div className="relative z-20 mb-12 md:mb-20 text-center w-full -translate-y-12 md:-translate-y-15">
                         <motion.div
                             initial={{ opacity: 0, y: -50 }}
                             animate={{ opacity: 1, y: 0 }}
