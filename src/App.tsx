@@ -7,8 +7,6 @@ import {
   Cloud,
   Terminal,
   Palette,
-  Award,
-  GraduationCap
 } from 'lucide-react';
 
 import LoadingScreen from './components/LoadingScreen';
@@ -17,6 +15,7 @@ import SkillCard from './components/SkillCard';
 import HeroScene from './components/HeroScene';
 // import Bookshelf from './components/Bookshelf'; // Replaced by HorizontalProjects
 import HorizontalProjects from './components/HorizontalProjects';
+import Qualifications from './components/Qualifications';
 import { usePageNavigation } from './hooks/usePageNavigation';
 
 // Page wrapper component for consistent transitions
@@ -74,12 +73,6 @@ function App() {
     },
   ];
 
-  const educationData = [
-    { year: '2023–2027', institution: 'VIT Vellore', score: 'CGPA: 8.81' },
-    { year: '2023', institution: 'Mayo International School', score: '93.8%' },
-    { year: '2021', institution: 'St. Mary\'s School', score: '93.8%' },
-  ];
-
   // Define all pages
   const pages = [
     // Page 0: Hero
@@ -130,124 +123,13 @@ function App() {
       </div>
     </div>,
 
-    // Page 2: Projects
+    // Page 2: Qualifications (Leadership, Education, Certifications)
+    <Qualifications key="qualifications" />,
+
+    // Page 3: Projects
     <HorizontalProjects key="projects" />,
 
-    // Page 3: Leadership
-    <div key="leadership" className="w-full h-full flex items-center justify-center px-8">
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-4xl font-bold mb-6 text-heading">
-          Leadership
-        </h2>
-      </motion.div>
-      <motion.div
-        initial={{ y: 30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8"
-      >
-        <div className="flex items-center mb-6">
-          <Award className="w-8 h-8 text-link mr-4" />
-          <h3 className="text-2xl font-bold text-heading">ADGVIT - Finance Head (Board Member)</h3>
-        </div>
-        <ul className="space-y-4 text-body">
-          <li className="flex items-start">
-            <div className="w-2 h-2 bg-link rounded-full mt-2 mr-4 flex-shrink-0"></div>
-            <span>Led sponsorship strategy and negotiations, securing funding for flagship events like iOS Fusion 7.0.</span>
-          </li>
-          <li className="flex items-start">
-            <div className="w-2 h-2 bg-link rounded-full mt-2 mr-4 flex-shrink-0"></div>
-            <span>Successfully invited Pragya Muthuraman (Founder, The Internet Company) as keynote speaker for Yantra 2025.</span>
-          </li>
-          <li className="flex items-start">
-            <div className="w-2 h-2 bg-link rounded-full mt-2 mr-4 flex-shrink-0"></div>
-            <span>Managed speaker relations for iOS Fusion 8.0, interacting with industry leaders like Amrit Raj (Co-Founder, Women in Product India).</span>
-          </li>
-          <li className="flex items-start">
-            <div className="w-2 h-2 bg-link rounded-full mt-2 mr-4 flex-shrink-0"></div>
-            <span>Collaborated with cross-functional teams to plan budgets and allocate funds for community workshops.</span>
-          </li>
-        </ul>
-      </motion.div>
-    </div>,
-
-    // Page 4: Education
-    <div key="education" className="w-full h-full flex items-center justify-center px-8">
-      <motion.div
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-4xl font-bold mb-6 text-heading">
-          Education
-        </h2>
-      </motion.div>
-      <div className="space-y-6">
-        {educationData.map((edu, index) => (
-          <motion.div
-            key={index}
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: index * 0.1 }}
-            className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 flex items-center justify-between hover:border-link/50 transition-all duration-300"
-          >
-            <div className="flex items-center">
-              <GraduationCap className="w-6 h-6 text-link mr-4" />
-              <div>
-                <h3 className="text-lg font-semibold text-heading">{edu.institution}</h3>
-                <p className="text-body text-sm">{edu.year}</p>
-              </div>
-            </div>
-            <div className="text-link font-semibold">
-              {edu.score}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>,
-
-    // Page 5: Certifications
-    <div key="certifications" className="w-full h-full flex items-center justify-center px-8">
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-4xl font-bold mb-6 text-heading">
-          Certifications
-        </h2>
-      </motion.div>
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 hover:border-yellow-500/50 transition-all duration-300"
-      >
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-4">
-            <Award className="w-10 h-10 text-link" />
-            <div className="text-left">
-              <h3 className="text-xl font-bold text-heading">IBM Generative AI Specialization</h3>
-              <p className="text-body">Score: 97/100 • Issued by IBM</p>
-            </div>
-          </div>
-          <a
-            href="https://drive.google.com/file/d/1wvgG0pRaP422fNMEcPwCsOlU0Y4_6QFr/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-2 bg-link/10 hover:bg-link/20 text-link rounded-lg transition-colors border border-link/50"
-          >
-            Certificate
-          </a>
-        </div>
-      </motion.div>
-    </div>,
-
-    // Page 6: Skills
+    // Page 4: Skills
     <div key="skills" className="w-full h-full flex items-center justify-center px-8">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
@@ -265,7 +147,7 @@ function App() {
       </motion.div>
     </div>,
 
-    // Page 7: Contact
+    // Page 5: Contact
     <div key="contact" className="w-full h-full flex items-center justify-center px-8">
       <motion.div
         initial={{ opacity: 0 }}
