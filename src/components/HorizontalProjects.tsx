@@ -169,22 +169,23 @@ const HorizontalProjects: React.FC = () => {
                 {/* Sticky Viewport */}
                 <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
 
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="absolute top-12 z-20 text-center w-full left-0"
-                    >
-                        <h2 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 tracking-tighter uppercase drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]">
-                            PROJECTS
-                        </h2>
-                    </motion.div>
+                    {/* Header - Flow Content */}
+                    <div className="relative z-20 mb-12 md:mb-20 text-center w-full">
+                        <motion.div
+                            initial={{ opacity: 0, y: -50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <h2 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 tracking-tighter uppercase drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]">
+                                PROJECTS
+                            </h2>
+                        </motion.div>
+                    </div>
 
                     {/* Horizontal Track */}
                     <div
                         ref={trackRef}
-                        className="flex items-center gap-12 md:gap-24 px-[5vw] md:px-[10vw] w-max h-full mt-24"
+                        className="flex items-center gap-12 md:gap-24 px-[15vw] md:px-[35vw] lg:px-[39vw] w-max"
                     >
                         {PROJECTS.map((project, index) => {
                             // Wave Animation Logic
