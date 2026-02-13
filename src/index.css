@@ -398,3 +398,13 @@ body::-webkit-scrollbar {
     scroll-behavior: auto !important;
   }
 }
+
+/* Custom Scrollbar */
+.custom-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}

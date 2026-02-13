@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface BookProps {
     title: string;
@@ -13,18 +13,18 @@ interface BookProps {
     width: string;
     delay?: number;
     onClick: () => void;
+    onHover?: (isHovered: boolean) => void;
 }
 
 const Book: React.FC<BookProps> = ({
     title,
-    shortDescription,
     color,
     height,
     width,
     delay = 0,
     onClick,
+    onHover,
 }) => {
-    const [isHovered, setIsHovered] = useState(false);
 
     return (
         <motion.div
@@ -35,8 +35,8 @@ const Book: React.FC<BookProps> = ({
             className="flex flex-col items-center"
         >
             <motion.div
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                onMouseEnter={() => onHover?.(true)}
+                onMouseLeave={() => onHover?.(false)}
                 onClick={onClick}
                 whileHover={{ y: -10 }}
                 className="cursor-pointer relative w-full h-full flex flex-col items-center justify-between py-4 transition-shadow hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]"
@@ -46,24 +46,6 @@ const Book: React.FC<BookProps> = ({
                     borderRight: '1px solid rgba(0,0,0,0.2)',
                 }}
             >
-                {/* Tooltip - Strictly nested and positioned relative to the spine */}
-                <AnimatePresence>
-                    {isHovered && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                            transition={{ duration: 0.1 }}
-                            className="absolute bottom-[calc(100%+16px)] left-1/2 -translate-x-1/2 z-[60] pointer-events-none"
-                        >
-                            <div className="bg-slate-900 border border-slate-700 text-slate-200 text-xs px-3 py-2 rounded shadow-2xl whitespace-nowrap">
-                                {shortDescription}
-                                {/* Connector Arrow */}
-                                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 border-r border-b border-slate-700 rotate-45" />
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
 
                 {/* Subtle Spine Texture/Shadow */}
                 <div className="absolute inset-y-0 left-0 w-1 bg-white/10 pointer-events-none" />

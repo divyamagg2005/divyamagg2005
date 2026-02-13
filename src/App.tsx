@@ -15,7 +15,8 @@ import LoadingScreen from './components/LoadingScreen';
 import Meteors from './components/Meteors';
 import SkillCard from './components/SkillCard';
 import HeroScene from './components/HeroScene';
-import Bookshelf from './components/Bookshelf';
+// import Bookshelf from './components/Bookshelf'; // Replaced by HorizontalProjects
+import HorizontalProjects from './components/HorizontalProjects';
 import { usePageNavigation } from './hooks/usePageNavigation';
 
 // Page wrapper component for consistent transitions
@@ -122,7 +123,7 @@ function App() {
               Beyond coursework, I actively <span className="text-heading font-medium">build projects</span>, explore <span className="text-heading font-medium">research-oriented concepts</span>, and stay curious about how <span className="text-heading font-medium">technology scales from local systems to real-world deployments</span>. I believe in <span className="text-heading font-medium">learning by doing</span>, <span className="text-heading font-medium">iterating fast</span>, and <span className="text-heading font-medium">constantly raising my own bar</span>.
             </p>
             <p>
-              This portfolio is a <span className="text-heading font-medium">snapshot of my journey</span>, <span className="text-heading font-medium">what I’m building</span>, <span className="text-heading font-medium">what I’m learning</span>, and <span className="text-heading font-medium">where I’m headed</span>.
+              This portfolio is a <span className="text-heading font-medium">snapshot of my journey</span>, <span className="text-heading font-medium">what I’m building</span>, <span className="text-heading font-medium">what I’m learning</span>, <span className="text-heading font-medium">where I’m headed</span>.
             </p>
           </div>
         </motion.div>
@@ -130,7 +131,7 @@ function App() {
     </div>,
 
     // Page 2: Projects
-    <Bookshelf key="projects" />,
+    <HorizontalProjects key="projects" />,
 
     // Page 3: Leadership
     <div key="leadership" className="w-full h-full flex items-center justify-center px-8">

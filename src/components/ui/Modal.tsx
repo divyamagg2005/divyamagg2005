@@ -21,26 +21,34 @@ const Modal: React.FC<ModalProps> = ({
     liveUrl,
     githubUrl,
 }) => {
-    // Handle ESC key
+    // Handle ESC key and Body Scroll Lock
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
             if (e.key === 'Escape') onClose();
         };
         window.addEventListener('keydown', handleEsc);
-        return () => window.removeEventListener('keydown', handleEsc);
+
+        // Lock body scroll
+        document.body.style.overflow = 'hidden';
+
+        return () => {
+            window.removeEventListener('keydown', handleEsc);
+            // Restore body scroll
+            document.body.style.overflow = '';
+        };
     }, [onClose]);
 
     return (
         <AnimatePresence>
             {isOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                    {/* Backdrop */}
+                    {/* Backdrop with Blur */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                        className="absolute inset-0 bg-black/60 backdrop-blur-md"
                     />
 
                     {/* Content */}
@@ -49,10 +57,10 @@ const Modal: React.FC<ModalProps> = ({
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                        className="relative bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl"
+                        className="relative bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col"
                     >
                         {/* Header */}
-                        <div className="p-6 border-b border-slate-800 flex justify-between items-center">
+                        <div className="p-6 border-b border-slate-800 flex justify-between items-center shrink-0">
                             <h2 className="text-2xl font-bold text-heading uppercase tracking-tight">{title}</h2>
                             <button
                                 onClick={onClose}
@@ -62,8 +70,8 @@ const Modal: React.FC<ModalProps> = ({
                             </button>
                         </div>
 
-                        {/* Body */}
-                        <div className="p-8 space-y-8">
+                        {/* Body - Scrollable */}
+                        <div className="p-8 space-y-8 overflow-y-auto custom-scrollbar">
                             <div className="space-y-4">
                                 <h3 className="text-sm font-mono text-muted uppercase tracking-widest">Description</h3>
                                 <p className="text-body leading-relaxed text-lg font-sans font-light">
@@ -87,7 +95,7 @@ const Modal: React.FC<ModalProps> = ({
                         </div>
 
                         {/* Footer */}
-                        <div className="p-6 bg-slate-900/50 border-t border-slate-800 flex gap-4">
+                        <div className="p-6 bg-slate-900/50 border-t border-slate-800 flex gap-4 shrink-0">
                             {liveUrl && (
                                 <a
                                     href={liveUrl}

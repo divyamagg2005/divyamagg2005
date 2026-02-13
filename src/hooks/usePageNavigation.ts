@@ -38,6 +38,40 @@ export const usePageNavigation = (totalPages: number) => {
                 return;
             }
 
+            // Check if the event target is within a scrollable container
+            let target = e.target as HTMLElement;
+            let scrollableParent: HTMLElement | null = null;
+
+            // Walk up the DOM tree to find a scrollable parent
+            while (target && target !== document.body) {
+                const overflowY = window.getComputedStyle(target).overflowY;
+                if (overflowY === 'auto' || overflowY === 'scroll') {
+                    scrollableParent = target;
+                    break;
+                }
+                target = target.parentElement as HTMLElement;
+            }
+
+            // If we found a scrollable parent, check if we should allow scrolling within it
+            if (scrollableParent) {
+                const { scrollTop, scrollHeight, clientHeight } = scrollableParent;
+                const isAtTop = scrollTop === 0;
+                const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 1;
+
+                // Allow scrolling within the container if not at boundaries
+                if (e.deltaY > 0 && !isAtBottom) {
+                    // Scrolling down and not at bottom - allow scroll
+                    scrollAccumulator = 0;
+                    return;
+                }
+
+                if (e.deltaY < 0 && !isAtTop) {
+                    // Scrolling up and not at top - allow scroll
+                    scrollAccumulator = 0;
+                    return;
+                }
+            }
+
             // Accumulate scroll delta
             scrollAccumulator += e.deltaY;
 
@@ -75,9 +109,40 @@ export const usePageNavigation = (totalPages: number) => {
 
             const touchEnd = e.changedTouches[0].clientY;
             const diff = touchStartRef.current - touchEnd;
+            const MathDiff = Math.abs(diff);
 
             // Require minimum swipe distance (50px)
-            if (Math.abs(diff) > 50) {
+            if (MathDiff > 50) {
+                // Check if the event target is within a scrollable container
+                let target = e.target as HTMLElement;
+                let scrollableParent: HTMLElement | null = null;
+
+                // Walk up the DOM tree to find a scrollable parent
+                while (target && target !== document.body) {
+                    const overflowY = window.getComputedStyle(target).overflowY;
+                    if (overflowY === 'auto' || overflowY === 'scroll') {
+                        scrollableParent = target;
+                        break;
+                    }
+                    target = target.parentElement as HTMLElement;
+                }
+
+                if (scrollableParent) {
+                    const { scrollTop, scrollHeight, clientHeight } = scrollableParent;
+                    const isAtTop = scrollTop === 0;
+                    const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 1;
+
+                    // If swiping up (scrolling down) and not at bottom, allow native scroll
+                    if (diff > 0 && !isAtBottom) {
+                        return;
+                    }
+
+                    // If swiping down (scrolling up) and not at top, allow native scroll
+                    if (diff < 0 && !isAtTop) {
+                        return;
+                    }
+                }
+
                 if (diff > 0) {
                     nextPage();
                 } else {
